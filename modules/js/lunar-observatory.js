@@ -113,8 +113,8 @@
     const el = document.getElementById('moonViz');
     if(!el){ console.error('moonViz not found'); return; }
     const moon = Globe()(el)
-      .globeImageUrl('../globe.gl-master/globe.gl-master/example/moon-landing-sites/lunar_surface.jpg')
-      .bumpImageUrl('../globe.gl-master/globe.gl-master/example/moon-landing-sites/lunar_bumpmap.jpg')
+      .globeImageUrl('https://threejs.org/examples/textures/planets/moon_1024.jpg')
+      .bumpImageUrl('https://threejs.org/examples/textures/planets/moon_1024.jpg')
       .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
       .showAtmosphere(false)
       .width(el.clientWidth)
