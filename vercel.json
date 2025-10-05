@@ -1,5 +1,7 @@
 {
   "cleanUrls": true,
+  "outputDirectory": ".",
+  "buildCommand": "",
   "headers": [
     {
       "source": "/assets/(.*)",
