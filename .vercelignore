@@ -1,0 +1,16 @@
+# Exclude vendor example trees and docs from deployment
+globe.gl-master/**
+webgl-earth-master/**
+docs/**
+
+# Exclude large root docs not needed at runtime
+*.md
+!README.md
+
+# Node tooling not needed for static deploy artifacts
+node_modules/**
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+

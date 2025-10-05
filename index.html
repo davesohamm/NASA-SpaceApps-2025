@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISSperience | 25th Anniversary Experience</title>
+    <meta name="description" content="Experience the International Space Station through the Cupola and Zero-G training. An interactive, gamified educational portal.">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.2">
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated starfield background -->
+    <div class="stars-container">
+        <div class="stars stars-small"></div>
+        <div class="stars stars-medium"></div>
+        <div class="stars stars-large"></div>
+    </div>
+
+    <!-- Floating particles for zero-g effect -->
+    <div class="floating-particles" id="particles"></div>
+
+    <!-- Floating ISS -->
+    <div class="floating-iss" id="floatingISS" title="International Space Station - Click me!">
+        <img src="assets/images/iss_smol.png" alt="International Space Station" />
+    </div>
+
+    <!-- Sound toggle button -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-circle pulse">
+                    <span class="logo-text">ISS</span>
+                </div>
+                <div class="logo-info">
+                    <h2 class="logo-title">ISSperience</h2>
+                    <p class="logo-subtitle">25th Anniversary</p>
+                </div>
+            </div>
+            <nav class="nav-badges">
+                <div class="badge-count">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-number">0/12</span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="astronaut-float">
+                    <div class="astronaut-character">👨‍🚀</div>
+                </div>
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Welcome to the</span>
+                        <span class="title-highlight">ISSperience</span>
+                    </h1>
+                    <p class="hero-description">
+                        Experience life aboard the International Space Station! Gaze at Earth through the Cupola, 
+                        train in zero gravity, and discover how space exploration benefits humanity.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">25</span>
+                            <span class="stat-label">Years in Orbit</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">270+</span>
+                            <span class="stat-label">Spacewalks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">90%</span>
+                            <span class="stat-label">Earth Coverage</span>
+                        </div>
+                    </div>
+                    <button class="cta-button pulse-glow" id="startButton">
+                        <span class="button-text">Start Your Mission</span>
+                        <span class="button-icon">🚀</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Modules Section -->
+        <section class="modules-section">
+            <h2 class="section-title">
+                <span class="title-decoration">⚡</span>
+                Mission Modules
+                <span class="title-decoration">⚡</span>
+            </h2>
+            <p class="section-subtitle">Choose your experience and start exploring</p>
+
+            <div class="modules-grid">
+                <!-- Module 1: Cupola -->
+                <div class="module-card" data-module="cupola">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🪟</div>
+                        <h3 class="card-title">Cupola Window</h3>
+                        <p class="card-description">
+                            View Earth through the iconic seven-window dome. Watch day-night cycles, 
+                            explore continents, and witness 16 sunrises per day!
+                        </p>
+                        <div class="card-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <button class="card-button">
+                            <span>Enter Module</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 2: Earth Check -->
+                <div class="module-card" data-module="earth">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🌍</div>
+                        <h3 class="card-title">Is My World Okay?!</h3>
+                        <p class="card-description">
+                            View stunning Earth images from NASA EPIC satellite, 1 million miles away! 
+                            See the full disc of our planet in real-time natural color.
+                        </p>
+                        <div class="card-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <button class="card-button" onclick="window.location.href='modules/earth-check.html'">
+                            <span>Enter Module</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 3: Zero-G Lab -->
+                <div class="module-card" data-module="zerog">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🎮</div>
+                        <h3 class="card-title">Zero-G Training Lab</h3>
+                        <p class="card-description">
+                            Train like a real astronaut! Master neutral buoyancy, complete tasks 
+                            in weightlessness, and experience what it feels like in space.
+                        </p>
+                        <div class="card-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <button class="card-button">
+                            <span>Enter Module</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 4: Moon View -->
+                <div class="module-card" data-module="moon">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🌙</div>
+                        <h3 class="card-title">Lunar Observatory</h3>
+                        <p class="card-description">
+                            Explore Earth's closest neighbor. Discover lunar landing sites, 
+                            study the Moon's surface, and learn about future missions.
+                        </p>
+                        <div class="card-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <button class="card-button">
+                            <span>Enter Module</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 5: Knowledge Center -->
+                <div class="module-card" data-module="knowledge">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">📚</div>
+                        <h3 class="card-title">Knowledge Center</h3>
+                        <p class="card-description">
+                            Learn about ISS's 25-year journey, discover how the Cupola works, 
+                            and understand neutral buoyancy training at NASA's NBL.
+                        </p>
+                        <div class="card-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <button class="card-button" onclick="window.location.href='modules/knowledge-center.html'">
+                            <span>Enter Module</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Module 6: Certification -->
+                <div class="module-card" data-module="certification">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🏆</div>
+                        <h3 class="card-title">Astronaut Certification</h3>
+                        <p class="card-description">
+                            Earn badges, track your progress, and generate your official 
+                            Astronaut Certificate with your achievements!
+                        </p>
+                        <div class="card-badge locked">
+                            <span class="badge-icon">🔒</span>
+                            <span class="badge-text">Locked</span>
+                        </div>
+                        <button class="card-button" disabled>
+                            <span>Coming Soon</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>NASA Space Apps Challenge 2025</h4>
+                    <p>International Space Station 25th Anniversary</p>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-credits">
+                        Built with 💙 for space education<br>
+                        Data sources: NASA, NOAA, ISS Archives
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <div class="social-links">
+                        <button class="social-link" id="quickLinksButton" aria-haspopup="dialog" aria-controls="quickLinksModal" aria-label="Quick Links">🔗</button>
+                        <a href="https://github.com/davesohamm" class="social-link" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">ℹ️</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading screen (hidden after page loads) -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-center">🚀</div>
+            </div>
+            <p class="loading-text">Initializing Mission Control...</p>
+        </div>
+    </div>
+
+    <!-- Quick Links Modal -->
+    <div class="modal" id="quickLinksModal" role="dialog" aria-modal="true" aria-labelledby="quickLinksTitle" hidden>
+        <div class="modal-backdrop" data-dismiss="quick-links"></div>
+        <div class="modal-dialog" role="document">
+            <div class="modal-header">
+                <h3 id="quickLinksTitle">Quick Links • NASA Space Apps 2025</h3>
+                <button class="modal-close" id="quickLinksClose" aria-label="Close Quick Links">✕</button>
+            </div>
+            <div class="modal-body">
+                <ul class="quick-links-list">
+                    <li><strong>Problem Statement</strong>: <a href="https://www.spaceappschallenge.org/2025/challenges/international-space-station-25th-anniversary-apps/" target="_blank" rel="noopener noreferrer">International Space Station 25th Anniversary Apps</a></li>
+                    <li><strong>NASA Image and Video Library</strong>: <a href="https://images.nasa.gov/" target="_blank" rel="noopener noreferrer">images.nasa.gov</a></li>
+                    <li><strong>NASA’s Johnson Space Center Flickr – Cupola + NBL</strong>: <a href="https://www.flickr.com/photos/nasa2explore/albums/" target="_blank" rel="noopener noreferrer">NASA Johnson Flickr Albums</a></li>
+                    <li><strong>Station Research and Technology</strong>: <a href="https://www.nasa.gov/international-space-station/space-station-research-and-technology/" target="_blank" rel="noopener noreferrer">ISS Research & Technology</a></li>
+                    <li><strong>NASA Open Data Portal</strong>: <a href="https://data.nasa.gov/dataset/?q=ISS+Coords&sort=score+desc%2C+metadata_modified+desc" target="_blank" rel="noopener noreferrer">ISS Coords datasets</a></li>
+                    <li><strong>Neutral Buoyancy Lab Overview</strong>: <a href="https://www.nasa.gov/johnson/neutral-buoyancy-laboratory/" target="_blank" rel="noopener noreferrer">NBL Overview</a></li>
+                    <li><strong>Extravehicular Activity Systems</strong>: <a href="https://www.nasa.gov/reference/jsc-eva-systems/" target="_blank" rel="noopener noreferrer">EVA Systems Reference</a></li>
+                    <li><strong>EVA and Environmental Physiology</strong>: <a href="https://www.nasa.gov/directorates/esdmd/hhp/space-suits-and-exploration-operations/" target="_blank" rel="noopener noreferrer">Space Suits & Exploration Ops</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js?v=0.2.1"></script>
+</body>
+</html>
+

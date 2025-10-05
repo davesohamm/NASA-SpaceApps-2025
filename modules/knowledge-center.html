@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Center | ISSperience</title>
+    <meta name="description" content="Explore 25 years of ISS history and learn about Neutral Buoyancy Laboratory training">
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css?v=1.0.2">
+    <link rel="stylesheet" href="css/knowledge-center.css?v=1.0.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="knowledge-center-page">
+    <!-- Background stars -->
+    <div id="particles"></div>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <!-- Back Button -->
+    <a href="../index.html" class="back-button">
+        <span class="back-icon">←</span>
+        <span class="back-text">Back to Station</span>
+    </a>
+
+    <div class="knowledge-center-container">
+        <!-- Module Header -->
+        <header class="module-header">
+            <div class="header-icon">📚</div>
+            <div class="header-content">
+                <h1 class="module-title">Knowledge Center</h1>
+                <p class="module-subtitle">Explore 25 years of ISS history and NBL training</p>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Card Selection -->
+            <section class="card-selection" id="cardSelection">
+                <h2 class="section-title">Choose Your Learning Path</h2>
+                <div class="cards-grid">
+                    <!-- ISS Card -->
+                    <div class="learning-card" data-card="iss">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="card-icon">🚀</div>
+                            <h3 class="card-title">ISS Timeline</h3>
+                            <p class="card-description">
+                                Journey through 25 years of International Space Station history. 
+                                Explore module launches, crew missions, breakthroughs, and challenges.
+                            </p>
+                            <div class="card-features">
+                                <span class="feature">📅 Interactive Timeline</span>
+                                <span class="feature">🧑‍🚀 Crew Stories</span>
+                                <span class="feature">❓ Micro Quizzes</span>
+                            </div>
+                            <button class="card-button">
+                                <span>Start Journey</span>
+                                <span class="button-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- NBL Card -->
+                    <div class="learning-card" data-card="nbl">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="card-icon">🏊</div>
+                            <h3 class="card-title">NBL Training</h3>
+                            <p class="card-description">
+                                Discover the Neutral Buoyancy Laboratory. Experience astronaut training 
+                                and learn about underwater spacewalk preparation.
+                            </p>
+                            <div class="card-features">
+                                <span class="feature">⚖️ Buoyancy Simulator</span>
+                                <span class="feature">📚 History Cards</span>
+                                <span class="feature">🎯 Fun Facts</span>
+                            </div>
+                            <button class="card-button">
+                                <span>Start Training</span>
+                                <span class="button-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ISS Timeline Section -->
+            <section class="iss-section" id="issSection" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">ISS 25-Year Journey</h2>
+                    <p class="section-subtitle">Scroll through history and discover amazing stories</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="timeline-container">
+                    <div class="timeline-track" id="timelineTrack">
+                        <!-- Timeline items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Timeline Navigation -->
+                <div class="timeline-nav">
+                    <button class="nav-btn" id="prevTimeline">← Previous</button>
+                    <div class="timeline-progress">
+                        <div class="progress-bar" id="timelineProgress"></div>
+                        <span class="progress-text" id="timelineProgressText">1 of 12</span>
+                    </div>
+                    <button class="nav-btn" id="nextTimeline">Next →</button>
+                </div>
+
+                <!-- Timeline Content Area -->
+                <div class="timeline-content" id="timelineContent">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- NBL Section -->
+            <section class="nbl-section" id="nblSection" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Neutral Buoyancy Laboratory</h2>
+                    <p class="section-subtitle">Experience astronaut training and learn NBL history</p>
+                </div>
+
+                <!-- NBL Tabs -->
+                <div class="nbl-tabs">
+                    <button class="tab-btn active" data-tab="simulator">Buoyancy Simulator</button>
+                    <button class="tab-btn" data-tab="history">NBL History</button>
+                    <button class="tab-btn" data-tab="facts">Fun Facts</button>
+                </div>
+
+                <!-- Buoyancy Simulator Tab -->
+                <div class="tab-content active" id="simulatorTab">
+                    <div class="simulator-container">
+                        <div class="simulator-visual">
+                            <div class="pool-container">
+                                <div class="pool-water"></div>
+                                <div class="astronaut-float" id="astronautFloat">
+                                    <img src="../assets/images/objects/astronaut.png" alt="Astronaut" />
+                                </div>
+                                <div class="buoyancy-indicator" id="buoyancyIndicator">
+                                    <span class="indicator-text">Neutral</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label for="weightSlider">Astronaut Weight (kg)</label>
+                                <input type="range" id="weightSlider" min="0" max="100" value="70" class="slider">
+                                <span class="slider-value" id="weightValue">70 kg</span>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="foamSlider">Buoyancy Foam Density</label>
+                                <input type="range" id="foamSlider" min="0" max="100" value="50" class="slider">
+                                <span class="slider-value" id="foamValue">50%</span>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label for="taskComplexity">Task Complexity</label>
+                                <select id="taskComplexity" class="task-select">
+                                    <option value="simple">Simple (Basic movement)</option>
+                                    <option value="moderate" selected>Moderate (Tool handling)</option>
+                                    <option value="complex">Complex (Equipment repair)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="simulator-results">
+                                <div class="result-item">
+                                    <span class="result-label">Buoyancy Status:</span>
+                                    <span class="result-value" id="buoyancyStatus">Neutral</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Task Time Impact:</span>
+                                    <span class="result-value" id="taskTimeImpact">Normal</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Training Difficulty:</span>
+                                    <span class="result-value" id="trainingDifficulty">Moderate</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Physics Info:</span>
+                                    <span class="result-value" id="physicsInfo">Archimedes' Principle</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NBL History Tab -->
+                <div class="tab-content" id="historyTab">
+                    <div class="history-cards-container">
+                        <div class="cards-deck" id="historyCardsDeck">
+                            <!-- History cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fun Facts Tab -->
+                <div class="tab-content" id="factsTab">
+                    <div class="facts-cards-container">
+                        <div class="cards-deck" id="factsCardsDeck">
+                            <!-- Fun facts cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="module-footer">
+            <p>📚 Knowledge Center • Explore, Learn, Discover</p>
+            <p>✨ Interactive learning experiences about ISS and NBL</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js?v=1.0.1"></script>
+    <script src="js/knowledge-center.js?v=1.0.1"></script>
+</body>
+</html>

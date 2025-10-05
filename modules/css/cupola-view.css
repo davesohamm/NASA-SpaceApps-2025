@@ -1,0 +1,446 @@
+/* ===================================
+   Cupola View Module Styles
+   Version: 1.0.1 - Fixed back button
+   =================================== */
+
+.cupola-page {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: #000000;
+}
+
+/* ===================================
+   Back Button
+   =================================== */
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--white-soft, #F0F4F8);
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    background: rgba(0, 217, 255, 0.1);
+    border-color: #00D9FF;
+    transform: translateX(-5px);
+    box-shadow: 0 6px 24px rgba(0, 217, 255, 0.3);
+}
+
+.back-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.back-text {
+    font-size: 0.95rem;
+}
+
+/* ===================================
+   Cupola Container
+   =================================== */
+
+.cupola-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 1.5rem 3rem;
+}
+
+/* ===================================
+   Cupola Viewport
+   =================================== */
+
+.cupola-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 1224px;
+    margin: 3rem auto;
+    aspect-ratio: 1224 / 816;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 50px rgba(0, 217, 255, 0.3),
+        0 0 100px rgba(255, 107, 53, 0.2),
+        inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Globe Container (Background) */
+.globe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Cupola Frame (Foreground Overlay) */
+.cupola-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.cupola-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.8));
+}
+
+/* ===================================
+   View Controls
+   =================================== */
+
+.view-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 20;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.view-controls .control-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    border-radius: 50px;
+    color: var(--white-soft, #F0F4F8);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-controls .control-btn:hover {
+    background: rgba(0, 217, 255, 0.2);
+    border-color: #00D9FF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.4);
+}
+
+.view-controls .control-btn:active {
+    transform: translateY(0);
+}
+
+.view-controls .control-btn.active {
+    background: rgba(0, 217, 255, 0.3);
+    border-color: #00D9FF;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+/* ===================================
+   View Info Badges
+   =================================== */
+
+.view-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 20;
+}
+
+.info-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    border-radius: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.badge-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge-value {
+    color: #00D9FF;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* ===================================
+   Info Cards
+   =================================== */
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.info-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.info-card:nth-child(1) { animation-delay: 0.1s; }
+.info-card:nth-child(2) { animation-delay: 0.2s; }
+.info-card:nth-child(3) { animation-delay: 0.3s; }
+.info-card:nth-child(4) { animation-delay: 0.4s; }
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 217, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 217, 255, 0.2);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: float 3s infinite ease-in-out;
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white-soft, #F0F4F8);
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===================================
+   Fun Facts
+   =================================== */
+
+.fun-facts {
+    margin: 4rem 0;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, #00D9FF, #FF6B35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.fact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.fact-card:hover {
+    transform: translateX(5px);
+    border-color: rgba(0, 217, 255, 0.4);
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 107, 53, 0.02));
+}
+
+.fact-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.fact-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.fact-text strong {
+    color: #00D9FF;
+    font-weight: 700;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+
+.module-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Space Grotesk', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.module-footer p {
+    margin: 0.5rem 0;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 768px) {
+    .back-button {
+        top: 15px;
+        left: 15px;
+        padding: 0.6rem 1rem;
+    }
+
+    .back-icon {
+        font-size: 1.3rem;
+    }
+
+    .back-text {
+        font-size: 0.85rem;
+    }
+
+    .cupola-container {
+        padding: 80px 1rem 2rem;
+    }
+
+    .cupola-viewport {
+        border-radius: 15px;
+        margin: 2rem auto;
+    }
+
+    .view-controls {
+        bottom: 10px;
+        gap: 0.5rem;
+    }
+
+    .view-controls .control-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .view-controls .control-btn span:last-child {
+        display: none;
+    }
+
+    .view-info {
+        top: 10px;
+        left: 10px;
+        gap: 0.5rem;
+    }
+
+    .info-badge {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .badge-label {
+        font-size: 0.75rem;
+    }
+
+    .badge-value {
+        font-size: 0.8rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .back-text {
+        display: none;
+    }
+
+    .back-icon {
+        font-size: 1.5rem;
+    }
+
+    .view-controls .control-btn {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .view-controls .control-btn span:first-child {
+        font-size: 1.2rem;
+    }
+}
+

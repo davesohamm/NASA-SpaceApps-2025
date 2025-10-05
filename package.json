@@ -1,0 +1,26 @@
+{
+  "name": "iss-explorer-station",
+  "version": "0.1.0",
+  "description": "Interactive gamified web portal for NASA Space Apps Challenge 2025 - ISS 25th Anniversary",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=8000",
+    "build": "echo 'Build script coming soon'",
+    "test": "echo 'Tests coming soon'"
+  },
+  "keywords": [
+    "nasa",
+    "space-apps",
+    "iss",
+    "education",
+    "gamification",
+    "space",
+    "interactive"
+  ],
+  "author": "NASA Space Apps Challenge 2025 Team",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
+

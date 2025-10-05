@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ISSperience | Astronaut Certificate</title>
+	<link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+	<link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/astronaut-certificate.css?v=1">
+</head>
+<body>
+	<div class="cert-page">
+		<header class="cert-header">
+			<div class="cert-title">
+				<span class="logo">ISS</span>
+				<h1>ISSperience Astronaut Certificate</h1>
+				<p>Official recognition of mission completion</p>
+			</div>
+			<button class="back-btn" onclick="window.location.href='../index.html'">⟵ Back</button>
+		</header>
+
+		<section class="cert-controls">
+			<div class="field">
+				<label for="astronautName">Your Name</label>
+				<input id="astronautName" type="text" placeholder="e.g., Samantha Carter" maxlength="40">
+			</div>
+			<div class="field">
+				<label for="astronautCodename">Codename</label>
+				<input id="astronautCodename" type="text" placeholder="e.g., STARHAWK" maxlength="24">
+			</div>
+			<div class="actions">
+				<button id="generateBtn" class="primary">Generate Certificate</button>
+				<button id="downloadBtn" class="secondary" disabled>Download Image</button>
+			</div>
+			<p class="hint">Unlocks automatically after earning 12/12 trophies.</p>
+		</section>
+
+		<section class="cert-preview-wrapper">
+			<!-- Render target for certificate -->
+			<div id="certificate" class="certificate" aria-label="Astronaut Certificate Preview">
+				<div class="cert-frame">
+					<div class="cert-bg-layer"></div>
+					<div class="cert-stars"></div>
+					<div class="cert-content">
+						<div class="cert-badge">🏆 12 / 12</div>
+						<h2>Certificate of Completion</h2>
+						<p class="subtitle">This certifies that</p>
+						<h3 id="certName">—</h3>
+						<p class="codename">Codename: <span id="certCodename">—</span></p>
+						<p class="statement">has successfully completed all mission modules of the ISSperience portal and demonstrated outstanding curiosity and perseverance aboard our virtual International Space Station.</p>
+						<div class="signatures">
+							<div class="sig-item">
+								<div class="sig-line"></div>
+								<span>Mission Director</span>
+							</div>
+							<div class="sig-item">
+								<div class="sig-line"></div>
+								<span>Chief Flight Officer</span>
+							</div>
+						</div>
+						<div class="cert-footer">
+							<div class="seal">🛰️</div>
+							<div class="meta">
+								<span id="certDate"></span>
+								<span>ISSperience • NASA Space Apps 2025</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+	<script src="../js/main.js?v=0.2.1"></script>
+	<script src="js/astronaut-certificate.js?v=1"></script>
+</body>
+</html>
+
+

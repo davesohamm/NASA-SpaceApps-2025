@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupola Window View | ISSperience</title>
+    <meta name="description" content="Experience the breathtaking view of Earth from the ISS Cupola - the window to the world">
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css?v=1.0.2">
+    <link rel="stylesheet" href="css/cupola-view.css?v=1.0.2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Globe.gl Library -->
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+</head>
+<body class="cupola-page">
+    <!-- Background stars -->
+    <div id="particles"></div>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <!-- Back Button -->
+    <a href="../index.html" class="back-button">
+        <span class="back-icon">←</span>
+        <span class="back-text">Back to Station</span>
+    </a>
+
+    <div class="cupola-container">
+        <!-- Module Header -->
+        <header class="module-header">
+            <div class="header-icon">🪟</div>
+            <div class="header-content">
+                <h1 class="module-title">Cupola Window View</h1>
+                <p class="module-subtitle">Experience Earth from the ISS's "Window to the World"</p>
+            </div>
+        </header>
+
+        <!-- Main Cupola View -->
+        <section class="cupola-viewport">
+            <!-- Globe container (background) -->
+            <div id="globeViz" class="globe-container"></div>
+            
+            <!-- Cupola frame overlay (foreground) -->
+            <div class="cupola-frame">
+                <img src="../assets/images/cupola.png" alt="ISS Cupola Window Frame" />
+            </div>
+
+            <!-- View Controls -->
+            <div class="view-controls">
+                <button class="control-btn" id="rotateBtn" title="Auto-rotate Earth">
+                    <span>🔄</span>
+                    <span>Auto-Rotate</span>
+                </button>
+                <button class="control-btn" id="dayNightBtn" title="Toggle day/night cycle">
+                    <span>🌓</span>
+                    <span>Day/Night</span>
+                </button>
+                <button class="control-btn" id="cloudsBtn" title="Toggle clouds">
+                    <span>☁️</span>
+                    <span>Clouds</span>
+                </button>
+                <button class="control-btn" id="resetViewBtn" title="Reset view">
+                    <span>🎯</span>
+                    <span>Reset View</span>
+                </button>
+            </div>
+
+            <!-- View Info -->
+            <div class="view-info">
+                <div class="info-badge">
+                    <span class="badge-label">Altitude:</span>
+                    <span class="badge-value">408 km</span>
+                </div>
+                <div class="info-badge">
+                    <span class="badge-label">Speed:</span>
+                    <span class="badge-value">7.66 km/s</span>
+                </div>
+                <div class="info-badge">
+                    <span class="badge-label">Location:</span>
+                    <span class="badge-value" id="currentLocation">--</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information cards -->
+        <section class="info-cards">
+            <div class="info-card">
+                <div class="card-icon">🪟</div>
+                <h3 class="card-title">The Cupola Module</h3>
+                <p class="card-text">
+                    The Cupola is a seven-windowed observatory module on the ISS, installed in 2010. 
+                    It features six side windows and one top window, each 20 inches (51 cm) in diameter. 
+                    This is where astronauts take the breathtaking photos of Earth you see online!
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">👁️</div>
+                <h3 class="card-title">Window to the World</h3>
+                <p class="card-text">
+                    From the Cupola, astronauts can observe 90% of Earth's surface. The station orbits 
+                    at 408 km altitude, completing one orbit every 90 minutes. That means 16 sunrises 
+                    and sunsets every single day!
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">📸</div>
+                <h3 class="card-title">Photography & Science</h3>
+                <p class="card-text">
+                    Astronauts use the Cupola to photograph hurricanes, wildfires, and geographic 
+                    features for scientific research. They also control the Canadarm2 robotic arm 
+                    from here, monitoring spacewalks and cargo operations.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">🌍</div>
+                <h3 class="card-title">Interactive View</h3>
+                <p class="card-text">
+                    Drag to rotate Earth, scroll to zoom in/out, and use the controls to explore 
+                    different viewing modes. Toggle day/night cycles, add clouds, or auto-rotate 
+                    to see Earth as astronauts do from the ISS!
+                </p>
+            </div>
+        </section>
+
+        <!-- Fun facts -->
+        <section class="fun-facts">
+            <h2 class="section-title">Cupola Facts 🌟</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">🪟</div>
+                    <p class="fact-text">The Cupola has <strong>7 windows</strong> - 6 around the sides and 1 on top</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">📏</div>
+                    <p class="fact-text">Each window is <strong>20 inches (51 cm)</strong> in diameter</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🇮🇹</div>
+                    <p class="fact-text">Built by the <strong>European Space Agency</strong> in Italy</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🚀</div>
+                    <p class="fact-text">Launched aboard <strong>Space Shuttle Endeavour</strong> in February 2010</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">⏱️</div>
+                    <p class="fact-text">Astronauts see <strong>16 sunrises</strong> and <strong>16 sunsets</strong> daily</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🌍</div>
+                    <p class="fact-text">Can observe <strong>90% of Earth's surface</strong> over time</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🤖</div>
+                    <p class="fact-text">Main workstation for controlling <strong>Canadarm2</strong> robotic arm</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">📸</div>
+                    <p class="fact-text">Source of most <strong>iconic Earth photos</strong> from space</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">💎</div>
+                    <p class="fact-text">Windows have <strong>4 panes each</strong> for protection from micrometeoroids</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="module-footer">
+            <p>🪟 Interactive 3D Earth View • Powered by Globe.GL & Three.js</p>
+            <p>✨ Experience the view astronauts see from the ISS Cupola every day</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js?v=1.0.1"></script>
+    <script src="js/cupola-view.js?v=1.0.1"></script>
+</body>
+</html>
+

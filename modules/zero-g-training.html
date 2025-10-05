@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-G Training Lab | ISSperience</title>
+    <meta name="description" content="Train like a real astronaut in zero gravity! Complete tasks in weightlessness and experience life aboard the ISS.">
+    <link rel="stylesheet" href="../css/styles.css?v=1.0.2">
+    <link rel="stylesheet" href="css/zero-g-training.css?v=1.0.0">
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated starfield background -->
+    <div class="stars-container">
+        <div class="stars stars-small"></div>
+        <div class="stars stars-medium"></div>
+        <div class="stars stars-large"></div>
+    </div>
+
+    <!-- Floating particles for zero-g effect -->
+    <div class="floating-particles" id="particles"></div>
+
+    <!-- Sound toggle button -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-circle pulse">
+                    <span class="logo-text">ISS</span>
+                </div>
+                <div class="logo-info">
+                    <h2 class="logo-title">Zero-G Training Lab</h2>
+                    <p class="logo-subtitle">Astronaut Training Module</p>
+                </div>
+            </div>
+            <nav class="nav-badges">
+                <button class="back-button" onclick="window.location.href='../index.html'">
+                    <span class="back-icon">←</span>
+                    <span>Back to Mission</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Training Levels Section -->
+        <section class="training-section">
+            <div class="training-header">
+                <h1 class="training-title">
+                    <span class="title-decoration">🚀</span>
+                    Zero-Gravity Training Levels
+                    <span class="title-decoration">🚀</span>
+                </h1>
+                <p class="training-subtitle">Master the challenges of working in microgravity</p>
+            </div>
+
+            <div class="levels-grid">
+                <!-- Level 1: Computer Station Setup -->
+                <div class="level-card" data-level="1" id="level1Card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="level-icon">💻</div>
+                        <h3 class="level-title">Level 1: Computer Station Setup</h3>
+                        <p class="level-description">
+                            Set up a computer workstation in zero gravity. Fix the monitor, connect the CPU, 
+                            and organize your tools like a real astronaut!
+                        </p>
+                        <div class="level-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="level1Progress"></div>
+                            </div>
+                            <span class="progress-text" id="level1ProgressText">0/4 Tasks</span>
+                        </div>
+                        <button class="level-button" onclick="startLevel(1)">
+                            <span>Start Level 1</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 2: Astronaut Survival -->
+                <div class="level-card" data-level="2" id="level2Card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="level-icon">👨‍🚀</div>
+                        <h3 class="level-title">Level 2: Astronaut Survival</h3>
+                        <p class="level-description">
+                            Help an astronaut survive in zero gravity! Collect water, provide food, 
+                            and ensure their well-being in the challenging space environment.
+                        </p>
+                        <div class="level-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="level2Progress"></div>
+                            </div>
+                            <span class="progress-text" id="level2ProgressText">0/4 Tasks</span>
+                        </div>
+                        <button class="level-button" onclick="startLevel(2)">
+                            <span>Start Level 2</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 3: Equipment Maintenance -->
+                <div class="level-card" data-level="3" id="level3Card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="level-icon">🔧</div>
+                        <h3 class="level-title">Level 3: Equipment Maintenance</h3>
+                        <p class="level-description">
+                            Fix floating equipment and organize tools in zero gravity. Master equipment 
+                            maintenance procedures and tool organization in space.
+                        </p>
+                        <div class="level-badge unlocked">
+                            <span class="badge-icon">✅</span>
+                            <span class="badge-text">Available</span>
+                        </div>
+                        <div class="level-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="level3Progress"></div>
+                            </div>
+                            <span class="progress-text" id="level3ProgressText">0/4 Tasks</span>
+                        </div>
+                        <button class="level-button" onclick="startLevel(3)">
+                            <span>Start Level 3</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Zero-G Training Lab</h4>
+                    <p>Experience authentic astronaut training</p>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-credits">
+                        Built with 💙 for space education<br>
+                        Based on real ISS procedures
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Task Briefing Modal (Hidden by default) -->
+    <div class="briefing-modal" id="briefingModal">
+        <div class="briefing-content">
+            <div class="briefing-header">
+                <h2>🚀 Level 1: Computer Station Setup</h2>
+                <p>Mission Briefing - Read all tasks before starting</p>
+            </div>
+            
+            <div class="briefing-tasks">
+                <h3>Your Mission Tasks:</h3>
+                <div class="task-grid">
+                    <div class="task-card">
+                        <div class="task-number">1</div>
+                        <div class="task-info">
+                            <h4>Fix Monitor</h4>
+                            <p>Drag the monitor to the bottom right corner of the ISS</p>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-number">2</div>
+                        <div class="task-info">
+                            <h4>Connect CPU</h4>
+                            <p>Place the CPU next to the monitor</p>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-number">3</div>
+                        <div class="task-info">
+                            <h4>Fix CPU Issues</h4>
+                            <p>Use the screwdriver to fix the CPU (automatic when CPU is placed)</p>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-number">4</div>
+                        <div class="task-info">
+                            <h4>Organize Toolbox</h4>
+                            <p>Place the toolbox in the right bottom corner</p>
+                        </div>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-number">5</div>
+                        <div class="task-info">
+                            <h4>Store Tools</h4>
+                            <p>Put the screwdriver inside the toolbox</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="briefing-instructions">
+                <h4>🎮 How to Play:</h4>
+                <ul>
+                    <li>Drag objects to move them around</li>
+                    <li>Objects float in zero gravity - they'll drift naturally</li>
+                    <li>Drop zones will highlight when you're dragging the right object</li>
+                    <li>Complete all tasks to finish the level</li>
+                </ul>
+            </div>
+            
+            <div class="briefing-controls">
+                <button class="briefing-button secondary" id="cancelBriefing">Cancel</button>
+                <button class="briefing-button primary" id="startGame">Start Mission</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 1 Game Container (Hidden by default) -->
+    <div class="game-container" id="gameContainer">
+        <div class="game-header">
+            <div class="game-title">
+                <h2>Level 1: Computer Station Setup</h2>
+                <p>Complete all tasks to finish the level</p>
+            </div>
+            <div class="game-controls">
+                <button class="control-button" id="showTasksButton">📋 Tasks</button>
+                <button class="control-button" id="pauseButton">⏸️ Pause</button>
+                <button class="control-button" id="restartButton">🔄 Restart</button>
+                <button class="control-button" id="closeButton">❌ Close</button>
+            </div>
+        </div>
+        
+        <div class="game-area" id="gameArea">
+            <!-- Background will be set via JavaScript -->
+            <div class="floating-objects" id="floatingObjects">
+                <!-- Objects will be dynamically created -->
+            </div>
+        </div>
+        
+        <!-- Hidden task UI (can be toggled) -->
+        <div class="game-ui hidden" id="gameUI">
+            <div class="task-list" id="taskList">
+                <h3>Tasks:</h3>
+                <ul id="taskItems">
+                    <li class="task-item" data-task="monitor">1. Fix monitor in bottom right corner</li>
+                    <li class="task-item" data-task="cpu">2. Connect CPU next to monitor</li>
+                    <li class="task-item" data-task="screwdriver">3. Use screwdriver to fix CPU</li>
+                    <li class="task-item" data-task="toolbox">4. Place toolbox in right bottom corner</li>
+                    <li class="task-item" data-task="screwdriver-toolbox">5. Put screwdriver in toolbox</li>
+                </ul>
+            </div>
+            
+            <div class="instructions">
+                <h4>Instructions:</h4>
+                <p>Drag objects to complete tasks. Objects float in zero gravity!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js?v=0.2.1"></script>
+    <script src="js/zero-g-training.js?v=1.0.0"></script>
+</body>
+</html>

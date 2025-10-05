@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunar Observatory | ISSperience</title>
+    <meta name="description" content="View the Moon through the Apollo 11 window overlay with interactive 3D controls">
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css?v=1.0.2">
+    <link rel="stylesheet" href="css/lunar-observatory.css?v=0.1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+</head>
+<body class="lunar-page">
+    <a href="../index.html" class="back-button"><span class="back-icon">←</span><span class="back-text">Back to Station</span></a>
+
+    <!-- Sound toggle button -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <div class="lunar-container">
+        <header class="module-header">
+            <div class="header-icon">🌙</div>
+            <div class="header-content">
+                <h1 class="module-title">Lunar Observatory</h1>
+                <p class="module-subtitle">See the Moon as if from Apollo 11</p>
+            </div>
+        </header>
+
+        <section class="lunar-viewport">
+            <div id="moonViz" class="moon-container"></div>
+            <div class="apollo-window">
+                <img src="../assets/images/apollo11.png" alt="Apollo 11 Window"/>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn" id="rotateBtn" title="Toggle auto-rotate"><span>🔄</span><span>Auto-Rotate</span></button>
+                <button class="control-btn" id="resetViewBtn" title="Reset view"><span>🎯</span><span>Reset</span></button>
+            </div>
+
+            <div class="badges">
+                <div class="badge"><span class="badge-label">POV:</span><span class="badge-value" id="povValue">--</span></div>
+            </div>
+        </section>
+
+        <section class="info-cards">
+            <div class="info-card"><div class="card-icon">🚀</div><h3 class="card-title">Apollo 11</h3><p class="card-text">Mare Tranquillitatis • 20 Jul 1969 • First human landing.</p></div>
+            <div class="info-card"><div class="card-icon">🌑</div><h3 class="card-title">No Air</h3><p class="card-text">No atmosphere → pitch‑black sky, razor‑sharp shadows.</p></div>
+            <div class="info-card"><div class="card-icon">🌗</div><h3 class="card-title">One Face</h3><p class="card-text">Synchronous rotation → we almost always see the same side.</p></div>
+        </section>
+
+        
+
+        <footer class="module-footer">
+            <p>Textures from Globe.GL moon example • Overlay: Apollo 11 window (transparent)</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js?v=0.1.0"></script>
+    <script src="js/lunar-observatory.js?v=0.1.0"></script>
+</body>
+</html>
+

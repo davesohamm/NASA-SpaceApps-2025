@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is My World Okay?! | ISSperience</title>
+    <meta name="description" content="Professional Earth observation from 3 premier satellites: NOAA GOES-16 East, NOAA GOES-17 West, and NASA EPIC deep space camera">
+    <link rel="icon" href="../assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles.css?v=1.0.2">
+    <link rel="stylesheet" href="css/earth-check.css?v=0.4.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="earth-check-page">
+    <!-- Animated starfield background -->
+    <div class="stars-container">
+        <div class="stars stars-small"></div>
+        <div class="stars stars-medium"></div>
+        <div class="stars stars-large"></div>
+    </div>
+
+    <!-- Back button -->
+    <a href="../index.html" class="back-button" aria-label="Back to home">
+        <span class="back-icon">←</span>
+        <span class="back-text">Back to Station</span>
+    </a>
+
+    <!-- Sound toggle -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound on/off">
+        <span class="sound-icon">🔊</span>
+    </button>
+
+    <!-- Main container -->
+    <div class="earth-check-container">
+        <!-- Header -->
+        <header class="module-header">
+            <div class="header-icon">🌍</div>
+            <div class="header-content">
+                <h1 class="module-title">Is My World Okay?!</h1>
+                <p class="module-subtitle">Real-time Earth monitoring from space</p>
+            </div>
+        </header>
+
+        <!-- Earth viewer section -->
+        <section class="earth-viewer">
+            <div class="viewer-container">
+                <!-- Canvas for displaying Earth image -->
+                <canvas id="earthCanvas" width="1100" height="1100"></canvas>
+                
+                <!-- Loading overlay -->
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner">
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-planet">🌍</div>
+                    </div>
+                    <p class="loading-text">Downloading Earth imagery...</p>
+                    <p class="loading-progress" id="loadingProgress">0%</p>
+                </div>
+
+                <!-- Image info overlay -->
+                <div class="image-info" id="imageInfo">
+                    <div class="info-item">
+                        <span class="info-label">📅 Captured:</span>
+                        <span class="info-value" id="captureTime">--</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="viewer-controls">
+                    <button class="control-btn" id="refreshBtn" title="Refresh now">
+                        <span>🔄</span>
+                        <span>Refresh</span>
+                    </button>
+                    <button class="control-btn" id="zoomBtn" title="Toggle zoom level">
+                        <span>🔍</span>
+                        <span id="zoomLevel">Zoom: 1x</span>
+                    </button>
+                    <button class="control-btn" id="downloadBtn" title="Download current image">
+                        <span>💾</span>
+                        <span>Save</span>
+                    </button>
+                </div>
+
+                <!-- Source Selector -->
+                <div class="source-selector">
+                    <label for="sourceSelect">🛰️ Satellite Source:</label>
+                    <select id="sourceSelect" class="source-dropdown">
+                        <option value="2">🎞️ Local Earth Animation - High Quality Time-lapse (9.9MB)</option>
+                        <option value="0">🌎 NOAA GOES-16 East - Americas & Atlantic (Recommended)</option>
+                        <option value="1">🌊 NOAA GOES-17 West - Pacific Ocean (Recommended)</option>
+                        <option value="3">🎬 NOAA Interactive Viewer - 40 Hours Time-lapse (Opens in new tab)</option>
+                    </select>
+                    <button class="control-btn" id="loadSourceBtn" title="Load selected source">
+                        <span>📡</span>
+                        <span>Load Source</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information cards -->
+        <section class="info-cards">
+            <div class="info-card">
+                <div class="card-icon">🌎</div>
+                <h3 class="card-title">NOAA GOES-16 East</h3>
+                <p class="card-text">
+                    Stationed at 75.2°W above the equator, GOES-16 monitors the Americas and 
+                    Atlantic Ocean. Its Advanced Baseline Imager captures stunning GeoColor 
+                    imagery every 10 minutes at 1808x1808 resolution, providing critical data 
+                    for weather forecasting and hurricane tracking.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">🌊</div>
+                <h3 class="card-title">NOAA GOES-17 West</h3>
+                <p class="card-text">
+                    Positioned at 137.2°W, GOES-17 watches over the Pacific Ocean and Western 
+                    Americas. Working in tandem with GOES-16, it provides continuous full-disc 
+                    imagery of weather systems, wildfires, volcanic eruptions, and atmospheric 
+                    conditions across the Pacific basin.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">🎞️</div>
+                <h3 class="card-title">Local Earth Animation</h3>
+                <p class="card-text">
+                    High-quality 9.9MB MP4 video showcasing Earth's beauty in motion. This 
+                    comprehensive time-lapse combines multiple satellite sources to create a smooth, 
+                    continuous animation of our planet. Optimized for web performance with fast 
+                    loading and excellent quality.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">🎬</div>
+                <h3 class="card-title">NOAA Interactive Viewer</h3>
+                <p class="card-text">
+                    Experience a stunning 40-hour time-lapse of Earth with 240 images captured every 
+                    10 minutes. Watch the day/night cycle, weather patterns, and cloud formations 
+                    evolve in real-time. Interactive controls allow you to pause, zoom, and navigate 
+                    through the entire 40-hour sequence. Opens in a new tab for full functionality.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Fun facts -->
+        <section class="fun-facts">
+            <h2 class="section-title">Did You Know? 🌟</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">🛰️</div>
+                    <p class="fact-text">GOES-16 & GOES-17 are <strong>35,786 km</strong> above Earth in geostationary orbit</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">📸</div>
+                    <p class="fact-text">GOES satellites capture a <strong>new image every 10 minutes</strong> 24/7</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🚀</div>
+                    <p class="fact-text">NASA EPIC is <strong>1.5 million km</strong> away at Lagrange Point L1</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🌈</div>
+                    <p class="fact-text">EPIC captures <strong>10 wavelengths</strong> from UV to near-infrared</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🌍</div>
+                    <p class="fact-text">These satellites monitor <strong>hurricanes, wildfires, and weather</strong> in real-time</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">⚡</div>
+                    <p class="fact-text">Combined resolution: <strong>1808px (GOES)</strong> and <strong>2048px (EPIC)</strong></p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🎨</div>
+                    <p class="fact-text">All images are in <strong>true color</strong> as seen by human eyes</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🌎</div>
+                    <p class="fact-text">GOES-16 launched <strong>November 2016</strong>, GOES-17 in <strong>March 2018</strong></p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🔬</div>
+                    <p class="fact-text">Data helps track <strong>ozone, aerosols, clouds, and vegetation</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="module-footer">
+            <p>🛰️ Data Sources: 
+                <a href="https://www.nesdis.noaa.gov/imagery/imagery-and-data/goes" target="_blank" rel="noopener">NOAA GOES-16 East</a> • 
+                <a href="https://www.nesdis.noaa.gov/imagery/imagery-and-data/goes" target="_blank" rel="noopener">NOAA GOES-17 West</a> • 
+                <a href="https://epic.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA EPIC</a>
+            </p>
+            <p>✨ Three premier satellites • High-resolution imagery • Professional Earth observation</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js?v=0.4.1"></script>
+    <script src="js/earth-check.js?v=0.4.1"></script>
+</body>
+</html>
+

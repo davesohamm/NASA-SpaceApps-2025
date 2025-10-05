@@ -1,0 +1,43 @@
+/* Lunar Observatory Styles v0.1.0 */
+
+.lunar-page { min-height: 100vh; background: #000; }
+
+.back-button { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: .5rem; padding: .75rem 1.25rem; background: rgba(255,255,255,.05); backdrop-filter: blur(10px); border:2px solid rgba(255,255,255,.1); border-radius:50px; color:#F0F4F8; text-decoration:none; font-family:'Space Grotesk',sans-serif; font-weight:600; transition:.3s; }
+.back-button:hover { background: rgba(0,217,255,.1); border-color:#00D9FF; transform: translateX(-5px); box-shadow:0 6px 24px rgba(0,217,255,.3); }
+.back-icon{font-size:1.5rem}
+
+.lunar-container { max-width: 1600px; margin: 0 auto; padding: 100px 1.5rem 3rem; }
+
+.lunar-viewport { position: relative; width: 70%; max-width: 1433px; margin: 2rem auto; aspect-ratio: 1 / 1; background:#000; border-radius: 20px; overflow:hidden; box-shadow:0 10px 50px rgba(0,217,255,.2), inset 0 0 60px rgba(0,0,0,.6); }
+.moon-container { position:absolute; inset:0; z-index:1; }
+.apollo-window { position:absolute; inset:0; z-index:10; pointer-events:none; }
+.apollo-window img { width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 0 24px rgba(0,0,0,.8)); }
+
+.controls { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:1rem; flex-wrap:wrap; z-index:20; }
+.control-btn { display:flex; align-items:center; gap:.5rem; padding:.75rem 1.25rem; background:rgba(0,0,0,.65); border:2px solid rgba(0,217,255,.3); border-radius:50px; color:#F0F4F8; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.95rem; cursor:pointer; transition:.3s; }
+.control-btn:hover { background:rgba(0,217,255,.2); border-color:#00D9FF; transform: translateY(-2px); box-shadow:0 8px 24px rgba(0,217,255,.3); }
+.control-btn.active { background:rgba(0,217,255,.3); border-color:#00D9FF; box-shadow:0 0 20px rgba(0,217,255,.4); }
+.control-slider { display:flex; align-items:center; gap:.5rem; background:rgba(0,0,0,.65); border:2px solid rgba(0,217,255,.3); border-radius:50px; padding:.5rem .75rem; color:#F0F4F8; font-family:'Space Grotesk',sans-serif; }
+.control-slider input[type=range]{ accent-color:#00D9FF; }
+
+.badges{ position:absolute; top:20px; left:20px; display:flex; flex-direction:column; gap:.5rem; z-index:20; }
+.badge{ display:flex; gap:.5rem; padding:.5rem 1rem; background:rgba(0,0,0,.7); border:1px solid rgba(0,217,255,.3); border-radius:20px; font-family:'Space Grotesk',sans-serif; }
+.badge-label{ color:rgba(255,255,255,.7); font-size:.85rem; }
+.badge-value{ color:#00D9FF; font-weight:700; font-size:.9rem; }
+
+.info-cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; margin:3rem 0; }
+.info-card{ background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); backdrop-filter: blur(10px); border:2px solid rgba(255,255,255,.1); border-radius:20px; padding:2rem; transition:.3s; }
+.info-card:hover{ transform: translateY(-5px); border-color: rgba(0,217,255,.5); box-shadow:0 10px 40px rgba(0,217,255,.2); }
+.card-icon{ font-size:3rem; margin-bottom:1rem; }
+.card-title{ font-family:'Orbitron',sans-serif; color:#F0F4F8; font-size:1.5rem; font-weight:800; margin-bottom:1rem; }
+.card-text{ color:rgba(255,255,255,.8); font-family:'Space Grotesk',sans-serif; line-height:1.6; }
+
+@media (max-width: 768px){
+  .back-button{ top:15px; left:15px; padding:.6rem 1rem; }
+  .lunar-container{ padding:80px 1rem 2rem; }
+  .lunar-viewport{ width: 95%; max-width: 95vw; }
+  .controls{ bottom:10px; }
+  .control-btn span:last-child{ display:none; }
+}
+
+

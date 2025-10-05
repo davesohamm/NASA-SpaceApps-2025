@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPLE EARTH TEST</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+        }
+        #status {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #111;
+            border: 1px solid #0f0;
+        }
+        #testCanvas {
+            border: 2px solid #0f0;
+            display: block;
+            background: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 SIMPLE EARTH IMAGE TEST</h1>
+    
+    <div id="status">
+        <h2>Status:</h2>
+        <div id="log"></div>
+    </div>
+    
+    <canvas id="testCanvas" width="800" height="800"></canvas>
+    
+    <script>
+        const log = document.getElementById('log');
+        
+        function addLog(message, color = '#0f0') {
+            const p = document.createElement('p');
+            p.style.color = color;
+            p.style.margin = '5px 0';
+            p.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            log.appendChild(p);
+            console.log(message);
+        }
+        
+        addLog('🚀 Test starting...');
+        
+        // Test image sources
+        const sources = [
+            {
+                name: 'NOAA GOES-17 (West)',
+                url: 'https://cdn.star.nesdis.noaa.gov/GOES17/ABI/FD/GEOCOLOR/latest.jpg'
+            },
+            {
+                name: 'NOAA GOES-16 (East)',
+                url: 'https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg'
+            },
+            {
+                name: 'Static NASA EPIC',
+                url: 'https://epic.gsfc.nasa.gov/archive/natural/2024/10/01/png/epic_1b_20241001003633.png'
+            }
+        ];
+        
+        async function testSource(source, index) {
+            addLog(`Testing source ${index + 1}: ${source.name}...`, '#ff0');
+            
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
+                const timeout = setTimeout(() => {
+                    addLog(`❌ ${source.name} - TIMEOUT (10s)`, '#f00');
+                    reject(new Error('Timeout'));
+                }, 10000);
+                
+                img.onload = () => {
+                    clearTimeout(timeout);
+                    addLog(`✅ ${source.name} - SUCCESS! (${img.width}x${img.height})`, '#0f0');
+                    
+                    // Draw to canvas
+                    const canvas = document.getElementById('testCanvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    ctx.drawImage(img, 0, 0);
+                    
+                    addLog(`✅ Image drawn to canvas!`, '#0f0');
+                    resolve(source);
+                };
+                
+                img.onerror = (error) => {
+                    clearTimeout(timeout);
+                    addLog(`❌ ${source.name} - FAILED TO LOAD`, '#f00');
+                    reject(error);
+                };
+                
+                img.src = `${source.url}?t=${Date.now()}`;
+            });
+        }
+        
+        async function testAllSources() {
+            addLog('📡 Testing all sources sequentially...');
+            
+            for (let i = 0; i < sources.length; i++) {
+                try {
+                    const result = await testSource(sources[i], i);
+                    addLog(`🎉 SUCCESS! Using: ${result.name}`, '#0f0');
+                    return; // Stop on first success
+                } catch (error) {
+                    addLog(`Trying next source...`, '#ff0');
+                }
+            }
+            
+            addLog('❌ ALL SOURCES FAILED!', '#f00');
+            addLog('Check:');
+            addLog('1. Internet connection');
+            addLog('2. Firewall/proxy settings');
+            addLog('3. Browser console (F12) for CORS errors');
+        }
+        
+        // Start test
+        testAllSources();
+    </script>
+</body>
+</html>
+
